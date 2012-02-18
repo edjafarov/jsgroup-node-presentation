@@ -1,0 +1,25 @@
+@font-face{
+	font-family:lucidaConsole;
+	src: url("/Lucida Console.ttf");
+}
+
+
+pre{
+	line-height: 1.5em;
+	font-family: lucidaConsole, arial;
+}
+
+pre li{
+	padding-left: 2em;
+}
+
+
+pre.lines20{
+	background: white;
+	font-size: 40%;
+}
+
+pre.lines30{
+	background: white;
+	font-size: 30%;
+}

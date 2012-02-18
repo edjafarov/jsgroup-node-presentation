@@ -1,0 +1,31 @@
+<div id="manipulator" style="font-size:400%; background-color: #ccc; position: absolute; top:0;bottom:0;left:0;right:0">manipulator</div>
+<script>
+
+
+var touchStart = null;
+var touchEnd = null;
+
+var socket = io.connect('<%=host%>');
+socket.emit('takeControl');
+
+$('#manipulator').html('<%=host%>');
+
+$('#manipulator').live('touchstart', function(evt){
+	$('#manipulator').html(evt.originalEvent.touches[0].pageX + " start");
+	touchStart = evt.originalEvent.touches[0].pageX;
+});
+$('#manipulator').live('touchend', function(evt){
+	$('#manipulator').html(evt.originalEvent.changedTouches[0].pageX + " end");
+	touchEnd = evt.originalEvent.changedTouches[0].pageX;
+	
+	if(touchStart - touchEnd < 0){
+		$('#manipulator').html("prev");	
+		socket.emit('slidePrevious');
+	}else{
+		$('#manipulator').html("next");	
+		socket.emit('slideNext');
+	}
+});
+
+
+</script>

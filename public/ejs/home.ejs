@@ -1,0 +1,16 @@
+<div style="text-align: center">
+<h1 style="font-size: 400%;">Take a wheel cap</h1>
+<img src="<%-dataUrl%>" width="600" height="600"/>
+<div>
+
+<script>
+
+
+var socket = io.connect('<%=host%>');
+
+socket.on("takeControl", function(){
+	document.location.href="/presentation"
+});
+
+socket.emit("listen");
+</script>
